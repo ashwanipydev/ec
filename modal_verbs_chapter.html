@@ -1,0 +1,510 @@
+
+<h2 class="sr-only">Chapter: Modal Verbs — Complete Interactive Lesson</h2>
+
+<style>
+  .mv-wrap { font-family: var(--font-sans); padding: 1.5rem 0; max-width: 660px; }
+  .chapter-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 4px; }
+  .chapter-heading { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 6px; }
+  .chapter-sub { font-size: 15px; color: var(--color-text-secondary); margin: 0 0 2rem; line-height: 1.6; }
+  .section-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 2rem 0 0.75rem; }
+  .formula-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .formula-box code { font-family: var(--font-mono); font-size: 14px; color: var(--color-text-primary); background: var(--color-background-tertiary); padding: 3px 7px; border-radius: 4px; }
+  .modal-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .modal-tab { padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); font-size: 13px; cursor: pointer; transition: all 0.15s; }
+  .modal-tab:hover { border-color: var(--color-border-primary); color: var(--color-text-primary); }
+  .modal-tab.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); font-weight: 500; }
+  .modal-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; display: none; }
+  .modal-card.visible { display: block; }
+  .mc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .mc-badge { font-size: 18px; font-weight: 500; background: var(--color-background-info); color: var(--color-text-info); border-radius: var(--border-radius-md); padding: 6px 16px; }
+  .mc-meaning { font-size: 13px; color: var(--color-text-secondary); }
+  .mc-hindi { font-size: 13px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .examples-grid { display: flex; flex-direction: column; gap: 8px; }
+  .ex-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; }
+  .ex-cell { padding: 10px 12px; border-radius: var(--border-radius-md); font-size: 13px; line-height: 1.5; }
+  .ex-cell.wrong { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }
+  .ex-cell.right { background: #EAF3DE; color: #3B6D11; border: 0.5px solid #97C459; }
+  .ex-cell.office { background: var(--color-background-secondary); color: var(--color-text-primary); border: 0.5px solid var(--color-border-tertiary); }
+  .ex-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .ex-label.red { color: #993C1D; }
+  .ex-label.green { color: #3B6D11; }
+  .ex-label.blue { color: var(--color-text-info); }
+  .hint-tag { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+  .office-section { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid var(--color-border-tertiary); }
+  .office-title { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .all-modals-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 1.5rem; }
+  .all-modals-table th { text-align: left; padding: 8px 10px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .all-modals-table td { padding: 10px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: top; line-height: 1.5; }
+  .all-modals-table tr:last-child td { border-bottom: none; }
+  .modal-word { font-weight: 500; color: var(--color-text-info); }
+  .hindi-small { font-size: 12px; color: var(--color-text-tertiary); display: block; margin-top: 2px; }
+  .quiz-area { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-top: 1.5rem; }
+  .quiz-q { font-size: 15px; color: var(--color-text-primary); margin-bottom: 1rem; line-height: 1.6; }
+  .quiz-q span.blank { display: inline-block; min-width: 90px; border-bottom: 2px solid var(--color-border-primary); text-align: center; font-weight: 500; color: var(--color-text-info); }
+  .quiz-options { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .quiz-opt { padding: 7px 18px; border: 0.5px solid var(--color-border-secondary); border-radius: 20px; font-size: 13px; cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); transition: all 0.15s; }
+  .quiz-opt:hover { border-color: var(--color-border-primary); }
+  .quiz-opt.correct { background: #EAF3DE; color: #3B6D11; border-color: #97C459; }
+  .quiz-opt.wrong { background: #FCEBEB; color: #A32D2D; border-color: #F09595; }
+  .quiz-feedback { font-size: 13px; line-height: 1.6; color: var(--color-text-secondary); min-height: 20px; margin-bottom: 1rem; }
+  .quiz-feedback.good { color: #3B6D11; }
+  .quiz-feedback.bad { color: #A32D2D; }
+  .quiz-nav { display: flex; align-items: center; gap: 10px; }
+  .quiz-nav button { padding: 7px 18px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); font-size: 13px; cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); }
+  .quiz-nav button:hover { background: var(--color-background-secondary); }
+  .quiz-progress { font-size: 12px; color: var(--color-text-tertiary); }
+  .score-chip { font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: 12px; background: var(--color-background-success); color: var(--color-text-success); margin-left: auto; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .tip-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; border: 0.5px solid var(--color-border-tertiary); }
+  .tip-icon { font-size: 18px; margin-bottom: 6px; color: var(--color-text-info); }
+  .tip-label { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .tip-text { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .nav-pills { display: flex; gap: 6px; margin-bottom: 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 1rem; }
+  .nav-pill { padding: 6px 16px; border-radius: var(--border-radius-md); font-size: 13px; cursor: pointer; color: var(--color-text-secondary); border: none; background: none; transition: all 0.15s; }
+  .nav-pill:hover { color: var(--color-text-primary); background: var(--color-background-secondary); }
+  .nav-pill.active { background: var(--color-background-info); color: var(--color-text-info); font-weight: 500; }
+  .section-page { display: none; }
+  .section-page.visible { display: block; }
+</style>
+
+<div class="mv-wrap">
+  <p class="chapter-title">Chapter — Day 8 Grammar</p>
+  <h1 class="chapter-heading">Modal Verbs</h1>
+  <p class="chapter-sub">The words that make you sound <em>professional, polite, and confident</em> in English — especially in the office.</p>
+
+  <div class="nav-pills">
+    <button class="nav-pill active" onclick="showPage('overview')">Overview</button>
+    <button class="nav-pill" onclick="showPage('each')">Each Modal</button>
+    <button class="nav-pill" onclick="showPage('office')">Office Use</button>
+    <button class="nav-pill" onclick="showPage('mistakes')">Mistakes</button>
+    <button class="nav-pill" onclick="showPage('quiz')">Practice Quiz</button>
+  </div>
+
+  <!-- PAGE 1: OVERVIEW -->
+  <div class="section-page visible" id="page-overview">
+    <p class="section-label">What is a modal verb?</p>
+    <div class="formula-box">
+      <p style="font-size:14px; color:var(--color-text-primary); margin:0 0 10px;">Modal verbs are <strong>helper verbs</strong> that come before the main verb. They show <em>possibility, permission, ability, obligation, or politeness.</em></p>
+      <p style="font-size:13px; color:var(--color-text-secondary); margin:0 0 8px;">Hindi में: ये वो words हैं जो बताते हैं — "सकता हूँ, चाहिए, होगा, होना चाहिए"</p>
+      <p style="font-size:14px; margin: 8px 0 4px; color:var(--color-text-primary);">Formula: <code>Subject + Modal + Main Verb (base form)</code></p>
+      <p style="font-size:13px; color:var(--color-text-secondary); margin:0;">Example: I <strong>can</strong> speak. / She <strong>should</strong> send the email. / We <strong>must</strong> finish.</p>
+    </div>
+
+    <p class="section-label">The 9 modals you need</p>
+    <table class="all-modals-table">
+      <thead><tr><th>Modal</th><th>Meaning</th><th>Hindi</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><span class="modal-word">Can</span></td><td>Ability / casual request</td><td><span class="hindi-small">सकता हूँ / क्या आप</span></td><td>Can you help me?</td></tr>
+        <tr><td><span class="modal-word">Could</span></td><td>Polite request / past ability</td><td><span class="hindi-small">क्या आप कृपया</span></td><td>Could you send the file?</td></tr>
+        <tr><td><span class="modal-word">Will</span></td><td>Future / promise</td><td><span class="hindi-small">करूँगा / होगा</span></td><td>I will complete it today.</td></tr>
+        <tr><td><span class="modal-word">Would</span></td><td>Very polite / conditional</td><td><span class="hindi-small">क्या आप... (formal)</span></td><td>Would you like to join?</td></tr>
+        <tr><td><span class="modal-word">Should</span></td><td>Advice / recommendation</td><td><span class="hindi-small">चाहिए</span></td><td>You should review this.</td></tr>
+        <tr><td><span class="modal-word">Must</span></td><td>Strong necessity / rule</td><td><span class="hindi-small">ज़रूर करना है</span></td><td>We must submit by Friday.</td></tr>
+        <tr><td><span class="modal-word">May</span></td><td>Formal permission / possibility</td><td><span class="hindi-small">शायद / क्या मैं</span></td><td>May I share my screen?</td></tr>
+        <tr><td><span class="modal-word">Might</span></td><td>Weak possibility</td><td><span class="hindi-small">शायद (कम chance)</span></td><td>I might be late today.</td></tr>
+        <tr><td><span class="modal-word">Need to</span></td><td>Necessity (informal)</td><td><span class="hindi-small">ज़रूरत है / करना है</span></td><td>I need to finish this now.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="section-label">The golden rule</p>
+    <div class="formula-box">
+      <p style="font-size:14px; color:var(--color-text-primary); margin:0 0 8px;">After a modal verb, the main verb is <strong>always in base form</strong> — no 's', no 'ing', no 'ed'.</p>
+      <div class="ex-row" style="margin-top:10px;">
+        <div class="ex-cell wrong"><div class="ex-label red">❌ Wrong</div>She can <u>goes</u>.<br>You should <u>sending</u>.<br>I must <u>finished</u>.</div>
+        <div class="ex-cell right"><div class="ex-label green">✅ Right</div>She can <u>go</u>.<br>You should <u>send</u>.<br>I must <u>finish</u>.</div>
+      </div>
+    </div>
+
+    <p class="section-label">Quick memory tips</p>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="tip-icon"><i class="ti ti-arrow-up" aria-hidden="true"></i></div><div class="tip-label">More formal →</div><div class="tip-text">can → could → would<br>Each step = more polite</div></div>
+      <div class="tip-card"><div class="tip-icon"><i class="ti ti-lock" aria-hidden="true"></i></div><div class="tip-label">Never change</div><div class="tip-text">No cans, wills, shoulds — modal verbs never take 's' or 'ed'</div></div>
+      <div class="tip-card"><div class="tip-icon"><i class="ti ti-bulb" aria-hidden="true"></i></div><div class="tip-label">Should vs Must</div><div class="tip-text">Should = advice (gentle)<br>Must = necessary (strong)</div></div>
+      <div class="tip-card"><div class="tip-icon"><i class="ti ti-help" aria-hidden="true"></i></div><div class="tip-label">May vs Might</div><div class="tip-text">May = 50% chance<br>Might = 20-30% chance</div></div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: EACH MODAL -->
+  <div class="section-page" id="page-each">
+    <p style="font-size:14px; color:var(--color-text-secondary); margin:0 0 1.25rem;">Tap any modal to see full examples, Hindi meaning, and office usage.</p>
+    <div class="modal-tabs" id="modalTabs"></div>
+    <div id="modalCards"></div>
+  </div>
+
+  <!-- PAGE 3: OFFICE USE -->
+  <div class="section-page" id="page-office">
+    <p style="font-size:14px; color:var(--color-text-secondary); margin:0 0 1.25rem;">Here's how modal verbs transform your office communication from basic to professional.</p>
+
+    <p class="section-label">Politeness levels — same request, different tone</p>
+    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:1.5rem;">
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-tertiary);">
+        <span style="font-size:11px; font-weight:500; background:#FCEBEB; color:#993C1D; padding:3px 8px; border-radius:10px; white-space:nowrap;">Rude</span>
+        <span style="font-size:14px; color:var(--color-text-primary);">"Send me the file."</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-tertiary);">
+        <span style="font-size:11px; font-weight:500; background:#EAF3DE; color:#3B6D11; padding:3px 8px; border-radius:10px; white-space:nowrap;">Okay</span>
+        <span style="font-size:14px; color:var(--color-text-primary);">"Can you send me the file?"</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-tertiary);">
+        <span style="font-size:11px; font-weight:500; background:#E6F1FB; color:#185FA5; padding:3px 8px; border-radius:10px; white-space:nowrap;">Good</span>
+        <span style="font-size:14px; color:var(--color-text-primary);">"Could you please send me the file?"</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid #97C459;">
+        <span style="font-size:11px; font-weight:500; background:#EAF3DE; color:#3B6D11; padding:3px 8px; border-radius:10px; white-space:nowrap;">Best</span>
+        <span style="font-size:14px; color:var(--color-text-primary);">"Would you be able to send me the file when you get a chance?"</span>
+      </div>
+    </div>
+
+    <p class="section-label">20 ready-to-use office sentences</p>
+    <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:1.5rem;" id="officeSentences"></div>
+
+    <p class="section-label">Email phrases with modals</p>
+    <div style="background:var(--color-background-secondary); border-radius:var(--border-radius-lg); padding:1.25rem; font-size:13px; line-height:2; color:var(--color-text-primary); font-family: var(--font-mono);">
+      I <span style="background:#E1F5EE;color:#0F6E56;padding:1px 5px;border-radius:3px;">would like</span> to follow up on my earlier email.<br>
+      <span style="background:#E6F1FB;color:#185FA5;padding:1px 5px;border-radius:3px;">Could you</span> please share your feedback by Thursday?<br>
+      I <span style="background:#EAF3DE;color:#3B6D11;padding:1px 5px;border-radius:3px;">will</span> send you the updated report by end of day.<br>
+      You <span style="background:#FAEEDA;color:#854F0B;padding:1px 5px;border-radius:3px;">may</span> find the attached document useful.<br>
+      Please let me know if I <span style="background:#EEEDFE;color:#534AB7;padding:1px 5px;border-radius:3px;">can</span> help with anything else.
+    </div>
+  </div>
+
+  <!-- PAGE 4: MISTAKES -->
+  <div class="section-page" id="page-mistakes">
+    <p style="font-size:14px; color:var(--color-text-secondary); margin:0 0 1.25rem;">These are the most common modal verb mistakes Hindi speakers make. Study these carefully.</p>
+    <div style="display:flex; flex-direction:column; gap:10px;" id="mistakesList"></div>
+  </div>
+
+  <!-- PAGE 5: QUIZ -->
+  <div class="section-page" id="page-quiz">
+    <p style="font-size:14px; color:var(--color-text-secondary); margin:0 0 1.25rem;">Choose the correct modal verb for each sentence. 10 questions total.</p>
+    <div class="quiz-area" id="quizContainer"></div>
+  </div>
+
+</div>
+
+<script>
+const modals = [
+  {
+    word: "CAN",
+    meaning: "Ability / Informal Request",
+    hindi: "सकता हूँ / क्या आप कर सकते हैं",
+    color: "info",
+    examples: [
+      { sentence: "I can speak Hindi and English.", note: "Ability — मैं बोल सकता हूँ" },
+      { sentence: "Can you help me with this task?", note: "Informal request — क्या आप help कर सकते हैं?" },
+      { sentence: "She can join the call from home.", note: "Possibility — वो घर से join कर सकती है" },
+    ],
+    wrong: "I can to speak English.",
+    right: "I can speak English.",
+    wrongNote: "Never use 'to' after a modal verb",
+    office: ["Can you share the presentation?", "I can complete this by Friday.", "Can we schedule a call tomorrow?", "He can take care of the client meeting."]
+  },
+  {
+    word: "COULD",
+    meaning: "Polite Request / Past Ability",
+    hindi: "क्या आप कृपया... (polite) / पहले सकता था (past)",
+    color: "teal",
+    examples: [
+      { sentence: "Could you please send me the report?", note: "Polite request — can से ज़्यादा polite" },
+      { sentence: "I could run 10 km when I was younger.", note: "Past ability — पहले मैं दौड़ सकता था" },
+      { sentence: "Could we move the meeting to 3 PM?", note: "Suggestion — formal way to suggest" },
+    ],
+    wrong: "Could you to check this email?",
+    right: "Could you check this email?",
+    wrongNote: "No 'to' after modal verbs",
+    office: ["Could you please review this document?", "Could we reschedule to tomorrow?", "Could you loop in Rahul on this email?", "Could you clarify what you mean by this?"]
+  },
+  {
+    word: "WILL",
+    meaning: "Future Promise / Decision Now",
+    hindi: "करूँगा / होगा — अभी decide किया",
+    color: "blue",
+    examples: [
+      { sentence: "I will send you the file today.", note: "Promise — अभी decide किया, करूँगा" },
+      { sentence: "The meeting will start at 9 AM.", note: "Scheduled future event" },
+      { sentence: "Will you attend the workshop?", note: "Question about future plan" },
+    ],
+    wrong: "I will to finish the task.",
+    right: "I will finish the task.",
+    wrongNote: "No 'to' after will",
+    office: ["I will keep you updated.", "Will you be able to present tomorrow?", "I will take care of this.", "The report will be ready by 5 PM."]
+  },
+  {
+    word: "WOULD",
+    meaning: "Very Polite Request / Conditional",
+    hindi: "क्या आप... (बहुत formal) / यदि होता तो",
+    color: "purple",
+    examples: [
+      { sentence: "Would you like to join us for lunch?", note: "Very polite invitation" },
+      { sentence: "I would appreciate your feedback.", note: "Polite statement — मुझे अच्छा लगेगा" },
+      { sentence: "Would it be possible to extend the deadline?", note: "Conditional, formal request" },
+    ],
+    wrong: "Would you to review this?",
+    right: "Would you review this?",
+    wrongNote: "No 'to' after would",
+    office: ["Would you be available for a quick call?", "I would like to discuss this further.", "Would it be possible to share an update?", "I would appreciate your support on this."]
+  },
+  {
+    word: "SHOULD",
+    meaning: "Advice / Recommendation",
+    hindi: "चाहिए — advice दे रहे हैं",
+    color: "amber",
+    examples: [
+      { sentence: "You should proofread the email before sending.", note: "Advice — यह करना अच्छा होगा" },
+      { sentence: "We should discuss this in the next meeting.", note: "Recommendation — team के लिए suggestion" },
+      { sentence: "Should I cc the manager on this?", note: "Asking for advice — क्या करूँ?" },
+    ],
+    wrong: "You should to call him.",
+    right: "You should call him.",
+    wrongNote: "No 'to' after should",
+    office: ["You should cc the client on this email.", "We should review the budget before approving.", "Should I prepare a summary slide?", "The team should be informed about this change."]
+  },
+  {
+    word: "MUST",
+    meaning: "Strong Necessity / Rule",
+    hindi: "ज़रूर करना है — no option",
+    color: "coral",
+    examples: [
+      { sentence: "You must submit the report by Friday.", note: "Strict deadline — ज़रूर करना है, कोई option नहीं" },
+      { sentence: "Attendees must register in advance.", note: "Rule / requirement" },
+      { sentence: "I must speak to the manager about this.", note: "Strong personal necessity" },
+    ],
+    wrong: "You must to attend the training.",
+    right: "You must attend the training.",
+    wrongNote: "No 'to' after must",
+    office: ["All team members must attend the all-hands.", "The data must be backed up daily.", "You must inform HR if you are on leave.", "This issue must be resolved before deployment."]
+  },
+  {
+    word: "MAY",
+    meaning: "Formal Permission / Possibility",
+    hindi: "क्या मैं... (formal) / शायद",
+    color: "green",
+    examples: [
+      { sentence: "May I share my screen?", note: "Formal permission — office meetings में use करें" },
+      { sentence: "The results may vary.", note: "Possibility — शायद ऐसा हो" },
+      { sentence: "May I ask you a question?", note: "Very polite — formal settings के लिए" },
+    ],
+    wrong: "May I to ask something?",
+    right: "May I ask something?",
+    wrongNote: "No 'to' after may",
+    office: ["May I take a moment to explain?", "This may affect our timeline.", "May I suggest an alternative approach?", "The project may be delayed due to dependencies."]
+  },
+  {
+    word: "MIGHT",
+    meaning: "Weak Possibility (less certain)",
+    hindi: "शायद — कम chance है, sure नहीं हूँ",
+    color: "pink",
+    examples: [
+      { sentence: "I might be late to the meeting today.", note: "Not sure — शायद late हो जाऊं" },
+      { sentence: "We might need to revise the plan.", note: "Possibility — पक्का नहीं है" },
+      { sentence: "She might have already sent the email.", note: "Uncertain past action" },
+    ],
+    wrong: "I might to join the call.",
+    right: "I might join the call.",
+    wrongNote: "No 'to' after might",
+    office: ["This might cause some delays.", "I might need more time to review this.", "She might not be available today.", "The client might request changes."]
+  },
+  {
+    word: "NEED TO",
+    meaning: "Necessity (informal, everyday)",
+    hindi: "ज़रूरत है / करना है — daily use",
+    color: "gray",
+    examples: [
+      { sentence: "I need to finish this before the deadline.", note: "Personal necessity — must जितना strong नहीं" },
+      { sentence: "We need to discuss the budget.", note: "Group necessity" },
+      { sentence: "Do you need to leave early today?", note: "Asking about someone's necessity" },
+    ],
+    wrong: "I need finish this task.",
+    right: "I need to finish this task.",
+    wrongNote: "'Need to' always needs 'to' — unlike other modals!",
+    office: ["I need to reschedule our meeting.", "We need to align on the timeline.", "Do you need to loop in anyone else?", "She needs to submit the form today."]
+  }
+];
+
+const officeSentences = [
+  { modal: "Could", sentence: "Could you please review this before the meeting?" },
+  { modal: "Will", sentence: "I will send the summary email shortly." },
+  { modal: "Should", sentence: "We should align on the deliverables first." },
+  { modal: "May", sentence: "May I share a few thoughts on this?" },
+  { modal: "Would", sentence: "Would you be available for a 15-minute call?" },
+  { modal: "Must", sentence: "This document must be approved before publishing." },
+  { modal: "Can", sentence: "Can you take the lead on this task?" },
+  { modal: "Might", sentence: "The timeline might shift by a day or two." },
+  { modal: "Could", sentence: "Could we table this for the next meeting?" },
+  { modal: "Should", sentence: "You should keep the client informed about the delay." },
+  { modal: "Will", sentence: "I will follow up with the team and share an update." },
+  { modal: "Would", sentence: "I would appreciate it if you could review this today." },
+  { modal: "May", sentence: "The results may not be available until next week." },
+  { modal: "Must", sentence: "All changes must be tested before going live." },
+  { modal: "Need to", sentence: "We need to finalize the agenda before Friday." },
+  { modal: "Can", sentence: "Can everyone confirm their availability for Monday?" },
+  { modal: "Might", sentence: "I might need to escalate this issue." },
+  { modal: "Could", sentence: "Could you clarify what you mean by 'urgent'?" },
+  { modal: "Should", sentence: "We should document this process for future reference." },
+  { modal: "Would", sentence: "Would it be possible to get this done by Wednesday?" },
+];
+
+const mistakes = [
+  { wrong: "I can to speak English.", right: "I can speak English.", reason: "Never use 'to' after modal verbs (except 'need to'). Hindi में हम 'के लिए' use करते हैं, English में नहीं।" },
+  { wrong: "She musts attend the meeting.", right: "She must attend the meeting.", reason: "Modal verbs NEVER take 's' for he/she/it. No 'cans', 'musts', 'shoulds'." },
+  { wrong: "You should to call him.", right: "You should call him.", reason: "Base form after modal. 'to' is not needed." },
+  { wrong: "Can you please to send the file?", right: "Can you please send the file?", reason: "After 'can', base form directly. No 'to'." },
+  { wrong: "I am willing to can go.", right: "I can go. / I am willing to go.", reason: "Two modals cannot be used together. Pick one." },
+  { wrong: "You must to register before tomorrow.", right: "You must register before tomorrow.", reason: "Must + base form. No 'to' needed." },
+  { wrong: "May I to ask a question?", right: "May I ask a question?", reason: "May + base form directly. Very common mistake in Indian English." },
+  { wrong: "He might to be late.", right: "He might be late.", reason: "Might + base form. No 'to'." },
+  { wrong: "I would like going.", right: "I would like to go.", reason: "Special case: 'would like' is followed by 'to' + verb, like want." },
+  { wrong: "We could went yesterday.", right: "We could have gone yesterday.", reason: "For past with modals: modal + have + past participle (gone, done, seen)." },
+];
+
+const quizData = [
+  { q: "_____ you please send me the updated file?", blank: "___", options: ["Can", "Could", "Must", "Would"], answer: "Could", feedback: "Correct! 'Could' is the most polite way to make a request. 'Can' also works, but 'Could' sounds more professional in office settings." },
+  { q: "I _____ finish the report by 5 PM. The client is waiting.", blank: "___", options: ["might", "must", "may", "could"], answer: "must", feedback: "Correct! 'Must' shows strong necessity. The client waiting makes it urgent — 'might' or 'may' would be too weak here." },
+  { q: "She _____ not be available today — she mentioned a doctor's appointment.", blank: "___", options: ["must", "will", "might", "should"], answer: "might", feedback: "Correct! 'Might' shows low possibility — you're not sure, just guessing. If you were certain, you'd say 'will not be available'." },
+  { q: "_____ I share my screen to show the presentation?", blank: "___", options: ["Should", "Must", "May", "Will"], answer: "May", feedback: "Correct! 'May I' is the standard, formal way to ask for permission in office meetings and presentations." },
+  { q: "You _____ always reply to client emails within 24 hours — it's company policy.", blank: "___", options: ["could", "might", "should", "would"], answer: "should", feedback: "Correct! 'Should' is used for advice, recommendations, and company best practices. 'Must' could also work here if it's a strict rule." },
+  { q: "I _____ be a bit late to the meeting. The traffic is bad.", blank: "___", options: ["must", "will", "might", "should"], answer: "might", feedback: "Correct! 'Might' expresses uncertainty — you're not sure if you'll be late, but it's possible." },
+  { q: "_____ you like to join us for the team lunch on Friday?", blank: "___", options: ["Would", "Must", "Should", "Might"], answer: "Would", feedback: "Correct! 'Would you like to' is the most polite, friendly invitation. It's widely used in professional and social settings." },
+  { q: "We _____ discuss the budget before making any decisions.", blank: "___", options: ["must", "might", "could", "need to"], answer: "need to", feedback: "Correct! 'Need to' expresses practical necessity for day-to-day tasks. 'Must' also works but sounds more urgent/strict." },
+  { q: "I _____ send you the document as soon as I receive it from the team.", blank: "___", options: ["should", "will", "might", "may"], answer: "will", feedback: "Correct! 'Will' is used for promises and decisions made at the moment of speaking. You're committing to an action." },
+  { q: "The project timeline _____ change if the client requests additional features.", blank: "___", options: ["must", "will", "may", "should"], answer: "may", feedback: "Correct! 'May' expresses possibility in formal contexts. 'Might' also works (slightly less certain). Both are used in professional writing." },
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = new Array(10).fill(false);
+
+function showPage(page) {
+  document.querySelectorAll('.section-page').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('visible');
+  event.target.classList.add('active');
+}
+
+function buildModalTabs() {
+  const tabsEl = document.getElementById('modalTabs');
+  const cardsEl = document.getElementById('modalCards');
+  modals.forEach((m, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'modal-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = m.word;
+    tab.onclick = () => {
+      document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.modal-card').forEach(c => c.classList.remove('visible'));
+      document.getElementById('mc-' + i).classList.add('visible');
+    };
+    tabsEl.appendChild(tab);
+
+    const card = document.createElement('div');
+    card.className = 'modal-card' + (i === 0 ? ' visible' : '');
+    card.id = 'mc-' + i;
+    card.innerHTML = `
+      <div class="mc-header">
+        <span class="mc-badge">${m.word}</span>
+        <div>
+          <div class="mc-meaning">${m.meaning}</div>
+          <div class="mc-hindi">${m.hindi}</div>
+        </div>
+      </div>
+      <div class="examples-grid">
+        ${m.examples.map(ex => `
+          <div style="padding:10px 12px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-tertiary);">
+            <div style="font-size:14px; color:var(--color-text-primary); margin-bottom:4px;">"${ex.sentence}"</div>
+            <div class="hint-tag">${ex.note}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="office-section">
+        <div class="office-title"><i class="ti ti-building" aria-hidden="true"></i> Grammar rule</div>
+        <div class="ex-row">
+          <div class="ex-cell wrong"><div class="ex-label red">❌ Wrong</div>${m.wrong}<div class="hint-tag">${m.wrongNote}</div></div>
+          <div class="ex-cell right"><div class="ex-label green">✅ Right</div>${m.right}</div>
+        </div>
+      </div>
+      <div class="office-section">
+        <div class="office-title"><i class="ti ti-briefcase" aria-hidden="true"></i> Office sentences</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          ${m.office.map(s => `<div class="ex-cell office">"${s}"</div>`).join('')}
+        </div>
+      </div>
+    `;
+    cardsEl.appendChild(card);
+  });
+}
+
+function buildOfficeSentences() {
+  const el = document.getElementById('officeSentences');
+  officeSentences.forEach(s => {
+    const row = document.createElement('div');
+    row.style = 'display:flex; align-items:center; gap:10px; padding:9px 12px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-tertiary); font-size:13px;';
+    row.innerHTML = `<span style="font-weight:500; color:var(--color-text-info); font-size:12px; min-width:58px;">${s.modal}</span><span style="color:var(--color-text-primary);">"${s.sentence}"</span>`;
+    el.appendChild(row);
+  });
+}
+
+function buildMistakes() {
+  const el = document.getElementById('mistakesList');
+  mistakes.forEach((m, i) => {
+    const div = document.createElement('div');
+    div.style = 'background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem 1.25rem;';
+    div.innerHTML = `
+      <div style="font-size:12px; font-weight:500; color:var(--color-text-tertiary); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Mistake ${i+1}</div>
+      <div class="ex-row" style="margin-bottom:8px;">
+        <div class="ex-cell wrong"><div class="ex-label red">❌ Wrong</div>${m.wrong}</div>
+        <div class="ex-cell right"><div class="ex-label green">✅ Right</div>${m.right}</div>
+      </div>
+      <div style="font-size:13px; color:var(--color-text-secondary); line-height:1.6; padding:8px 10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+        <i class="ti ti-info-circle" style="font-size:14px; vertical-align:-2px; margin-right:4px;" aria-hidden="true"></i>${m.reason}
+      </div>
+    `;
+    el.appendChild(div);
+  });
+}
+
+function renderQuiz() {
+  const q = quizData[currentQ];
+  const container = document.getElementById('quizContainer');
+  const alreadyAnswered = answered[currentQ];
+  container.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <div class="quiz-progress">Question ${currentQ + 1} of ${quizData.length}</div>
+      <div class="score-chip"><i class="ti ti-star" style="font-size:12px; vertical-align:-1px; margin-right:3px;" aria-hidden="true"></i>Score: ${score}/${quizData.length}</div>
+    </div>
+    <div class="quiz-q">${q.q.replace('___', '<span class="blank">?</span>')}</div>
+    <div class="quiz-options" id="quizOpts">
+      ${q.options.map(opt => `<button class="quiz-opt${alreadyAnswered ? (opt === q.answer ? ' correct' : answered[currentQ] === opt ? ' wrong' : '') : ''}" onclick="checkAnswer('${opt}')">${opt}</button>`).join('')}
+    </div>
+    <div class="quiz-feedback ${alreadyAnswered ? (answered[currentQ] === q.answer ? 'good' : 'bad') : ''}" id="quizFb">
+      ${alreadyAnswered ? (answered[currentQ] === q.answer ? '✅ ' : '❌ ') + q.feedback : ''}
+    </div>
+    <div class="quiz-nav">
+      <button onclick="prevQ()" ${currentQ === 0 ? 'disabled style="opacity:0.4"' : ''}>← Previous</button>
+      <button onclick="nextQ()" ${currentQ === quizData.length - 1 ? 'disabled style="opacity:0.4"' : ''}>Next →</button>
+      ${currentQ === quizData.length - 1 && score > 0 ? `<button onclick="sendPrompt('I scored ${score}/10 on the modal verbs quiz. Can you give me 5 more practice sentences to improve?')" style="margin-left:auto;">Get more practice ↗</button>` : ''}
+    </div>
+  `;
+}
+
+function checkAnswer(opt) {
+  if (answered[currentQ]) return;
+  const q = quizData[currentQ];
+  answered[currentQ] = opt;
+  if (opt === q.answer) score++;
+  document.querySelectorAll('.quiz-opt').forEach(btn => {
+    if (btn.textContent === q.answer) btn.classList.add('correct');
+    else if (btn.textContent === opt && opt !== q.answer) btn.classList.add('wrong');
+  });
+  const fb = document.getElementById('quizFb');
+  fb.textContent = (opt === q.answer ? '✅ ' : '❌ ') + q.feedback;
+  fb.className = 'quiz-feedback ' + (opt === q.answer ? 'good' : 'bad');
+}
+
+function nextQ() { if (currentQ < quizData.length - 1) { currentQ++; renderQuiz(); } }
+function prevQ() { if (currentQ > 0) { currentQ--; renderQuiz(); } }
+
+buildModalTabs();
+buildOfficeSentences();
+buildMistakes();
+renderQuiz();
+</script>
